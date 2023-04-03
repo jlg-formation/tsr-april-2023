@@ -4,12 +4,14 @@ import { getCoordinates, getAngleFromIndex } from "./math";
 import { querySelector, setAttribute } from "./misc";
 
 export class Board {
-  config: Config = {
+  #config: Config = {
     multiplicationFactor: 2,
     samples: 10,
   };
 
   clear() {
+    console.log("clear");
+
     querySelector("svg g.samples").innerHTML = "";
     querySelector("svg g.lines").innerHTML = "";
   }
@@ -21,9 +23,9 @@ export class Board {
 
   drawLines() {
     const gLineElement = querySelector("svg g.lines");
-    for (let i = 0; i < this.config.samples; i++) {
-      const angle1 = getAngleFromIndex(i, this.config.samples);
-      const angle2 = angle1 * this.config.multiplicationFactor;
+    for (let i = 0; i < this.#config.samples; i++) {
+      const angle1 = getAngleFromIndex(i, this.#config.samples);
+      const angle2 = angle1 * this.#config.multiplicationFactor;
       const p1 = getCoordinates(angle1);
       const p2 = getCoordinates(angle2);
 
@@ -38,8 +40,8 @@ export class Board {
 
   drawSamples() {
     const gSampleElement = querySelector("svg g.samples");
-    for (let i = 0; i < this.config.samples; i++) {
-      const point = getCoordinates(getAngleFromIndex(i, this.config.samples));
+    for (let i = 0; i < this.#config.samples; i++) {
+      const point = getCoordinates(getAngleFromIndex(i, this.#config.samples));
       const r = 1;
 
       const circle = document.createElementNS(SVGNS, "circle");
@@ -51,6 +53,6 @@ export class Board {
   }
 
   setConfig(config: Config) {
-    this.config = config;
+    this.#config = config;
   }
 }
