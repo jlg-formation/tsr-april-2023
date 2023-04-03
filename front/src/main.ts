@@ -9,20 +9,18 @@ import {
   svgns,
 } from "./constants";
 import { querySelector } from "./misc";
-
-console.log("hello");
+import { getAngleFromIndex, getCoordinates } from "./math";
 
 const gSampleElement = querySelector("svg g.samples");
 for (let i = 0; i < samples; i++) {
-  const angle = (i * 2 * Math.PI) / samples;
+  const angle = getAngleFromIndex(i, samples);
 
-  const cx = cx0 + r0 * Math.cos(angle);
-  const cy = cy0 + r0 * Math.sin(angle);
+  const point = getCoordinates(angle);
   const r = 1;
 
   const circle = document.createElementNS(svgns, "circle");
-  circle.setAttributeNS(null, "cx", cx + "");
-  circle.setAttributeNS(null, "cy", cy + "");
+  circle.setAttributeNS(null, "cx", point.x + "");
+  circle.setAttributeNS(null, "cy", point.y + "");
   circle.setAttributeNS(null, "r", r + "");
 
   gSampleElement.appendChild(circle);
