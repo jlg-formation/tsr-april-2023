@@ -8,13 +8,11 @@ import {
   samples,
   svgns,
 } from "./constants";
+import { querySelector } from "./misc";
 
 console.log("hello");
 
-const gSampleElement = document.querySelector("svg g.samples");
-if (gSampleElement === null) {
-  throw new Error("Cannot find selector svg g.samples");
-}
+const gSampleElement = querySelector("svg g.samples");
 for (let i = 0; i < samples; i++) {
   const angle = (i * 2 * Math.PI) / samples;
 
@@ -31,10 +29,7 @@ for (let i = 0; i < samples; i++) {
 }
 
 // make the lines
-const gLineElement = document.querySelector("svg g.lines");
-if (gLineElement === null) {
-  throw new Error("Cannot find selector svg g.lines");
-}
+const gLineElement = querySelector("svg g.lines");
 for (let i = 0; i < samples; i++) {
   const angle1 = (i * 2 * Math.PI) / samples;
   const angle2 = angle1 * multiplicationFactor;
