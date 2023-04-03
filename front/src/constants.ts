@@ -1,6 +1,9 @@
-export const cx0 = 50;
-export const cy0 = 50;
-export const r0 = 45;
+import { Circle } from "./interfaces/Circle";
+
+export const bigCircle: Circle = {
+  center: { x: 50, y: 50 },
+  radius: 45,
+};
 
 export const multiplicationFactor = 2;
 export const samples = 10;

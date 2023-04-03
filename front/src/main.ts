@@ -1,15 +1,8 @@
 import "./style.css";
 
-import {
-  cx0,
-  cy0,
-  multiplicationFactor,
-  r0,
-  samples,
-  svgns,
-} from "./constants";
-import { querySelector } from "./misc";
+import { multiplicationFactor, samples, svgns } from "./constants";
 import { getAngleFromIndex, getCoordinates } from "./math";
+import { querySelector } from "./misc";
 
 const gSampleElement = querySelector("svg g.samples");
 for (let i = 0; i < samples; i++) {
@@ -29,19 +22,17 @@ for (let i = 0; i < samples; i++) {
 // make the lines
 const gLineElement = querySelector("svg g.lines");
 for (let i = 0; i < samples; i++) {
-  const angle1 = (i * 2 * Math.PI) / samples;
+  const angle1 = getAngleFromIndex(i, samples);
   const angle2 = angle1 * multiplicationFactor;
 
-  const x1 = cx0 + r0 * Math.cos(angle1);
-  const y1 = cy0 + r0 * Math.sin(angle1);
-  const x2 = cx0 + r0 * Math.cos(angle2);
-  const y2 = cy0 + r0 * Math.sin(angle2);
+  const p1 = getCoordinates(angle1);
+  const p2 = getCoordinates(angle2);
 
   const line = document.createElementNS(svgns, "line");
-  line.setAttributeNS(null, "x1", x1 + "");
-  line.setAttributeNS(null, "y1", y1 + "");
-  line.setAttributeNS(null, "x2", x2 + "");
-  line.setAttributeNS(null, "y2", y2 + "");
+  line.setAttributeNS(null, "x1", p1.x + "");
+  line.setAttributeNS(null, "y1", p1.y + "");
+  line.setAttributeNS(null, "x2", p2.x + "");
+  line.setAttributeNS(null, "y2", p2.y + "");
 
   gLineElement.appendChild(line);
 }
