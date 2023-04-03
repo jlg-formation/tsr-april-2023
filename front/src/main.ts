@@ -2,7 +2,7 @@ import "./style.css";
 
 import { multiplicationFactor, samples, svgns } from "./constants";
 import { getAngleFromIndex, getCoordinates } from "./math";
-import { querySelector } from "./misc";
+import { querySelector, setAttribute } from "./misc";
 
 const gSampleElement = querySelector("svg g.samples");
 for (let i = 0; i < samples; i++) {
@@ -12,10 +12,9 @@ for (let i = 0; i < samples; i++) {
   const r = 1;
 
   const circle = document.createElementNS(svgns, "circle");
-  circle.setAttributeNS(null, "cx", point.x + "");
-  circle.setAttributeNS(null, "cy", point.y + "");
-  circle.setAttributeNS(null, "r", r + "");
-
+  setAttribute(circle, "cx", point.x);
+  setAttribute(circle, "cy", point.y);
+  setAttribute(circle, "r", r);
   gSampleElement.appendChild(circle);
 }
 
@@ -29,10 +28,9 @@ for (let i = 0; i < samples; i++) {
   const p2 = getCoordinates(angle2);
 
   const line = document.createElementNS(svgns, "line");
-  line.setAttributeNS(null, "x1", p1.x + "");
-  line.setAttributeNS(null, "y1", p1.y + "");
-  line.setAttributeNS(null, "x2", p2.x + "");
-  line.setAttributeNS(null, "y2", p2.y + "");
-
+  setAttribute(line, "x1", p1.x);
+  setAttribute(line, "y1", p1.y);
+  setAttribute(line, "x2", p2.x);
+  setAttribute(line, "y2", p2.y);
   gLineElement.appendChild(line);
 }
