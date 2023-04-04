@@ -1,7 +1,7 @@
 import { SVGNS } from "./constants";
 import { Config } from "./interfaces/Config";
 import { getCoordinates, getAngleFromIndex } from "./math";
-import { querySelector, setAttribute } from "./misc";
+import { $, setAttribute } from "./misc";
 
 export class Board {
   #config: Config = {
@@ -10,8 +10,8 @@ export class Board {
   };
 
   clear() {
-    querySelector("svg g.samples").innerHTML = "";
-    querySelector("svg g.lines").innerHTML = "";
+    $("svg g.samples").innerHTML = "";
+    $("svg g.lines").innerHTML = "";
   }
 
   draw() {
@@ -20,7 +20,7 @@ export class Board {
   }
 
   drawLines() {
-    const gLineElement = querySelector("svg g.lines");
+    const gLineElement = $("svg g.lines");
     for (let i = 0; i < this.#config.samples; i++) {
       const angle1 = getAngleFromIndex(i, this.#config.samples);
       const angle2 = angle1 * this.#config.multiplicationFactor;
@@ -37,7 +37,7 @@ export class Board {
   }
 
   drawSamples() {
-    const gSampleElement = querySelector("svg g.samples");
+    const gSampleElement = $("svg g.samples");
     for (let i = 0; i < this.#config.samples; i++) {
       const point = getCoordinates(getAngleFromIndex(i, this.#config.samples));
       const r = 1;

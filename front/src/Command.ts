@@ -1,5 +1,5 @@
 import { Config } from "./interfaces/Config";
-import { getKeys, querySelector } from "./misc";
+import { getKeys, $ } from "./misc";
 
 type OnChangeCallback = (newConfig: Config) => void;
 
@@ -29,29 +29,21 @@ export class Command {
     const keys = getKeys(this.config);
 
     for (const key of keys) {
-      const valueElt = querySelector(`div.command .${key} .value`);
+      const valueElt = $(`div.command .${key} .value`);
 
       valueElt.innerHTML = this.config[key] + "";
 
-      const sliderElt = querySelector(
-        `div.command .${key} input`,
-        HTMLInputElement
-      );
-
-      sliderElt.value = this.config[key] + "";
+      $(`div.command .${key} input`, HTMLInputElement).value =
+        this.config[key] + "";
     }
 
-    const buttonElt = querySelector("div.command button");
-    buttonElt.innerHTML = this.isPlaying ? "Arrêter" : "Démarrer";
+    $("div.command button").innerHTML = this.isPlaying ? "Arrêter" : "Démarrer";
   }
 
   setActions() {
     const keys = getKeys(this.config);
     for (const key of keys) {
-      const sliderElt = querySelector(
-        `div.command .${key} input`,
-        HTMLInputElement
-      );
+      const sliderElt = $(`div.command .${key} input`, HTMLInputElement);
 
       sliderElt.addEventListener("input", () => {
         const newValue = Number(sliderElt.value);
@@ -61,7 +53,7 @@ export class Command {
       });
     }
 
-    const buttonElt = querySelector("div.command button");
+    const buttonElt = $("div.command button");
     console.log("buttonElt: ", buttonElt);
     buttonElt.addEventListener("click", () => {
       console.log("click");

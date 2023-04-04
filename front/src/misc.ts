@@ -1,6 +1,6 @@
 type Class<T> = new () => T;
 
-export const querySelector = <T extends Element>(
+export const $ = <T extends Element>(
   cssSelector: string,
   type?: Class<T>
 ): T => {
