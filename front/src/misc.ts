@@ -1,9 +1,17 @@
-export const querySelector = (cssSelector: string): Element => {
+export const querySelector = <T extends Element>(
+  cssSelector: string,
+  type?: new () => T
+): T => {
   const result = document.querySelector(cssSelector);
   if (result === null) {
     throw new Error(`Cannot find css selector: ${cssSelector}`);
   }
-  return result;
+  if (type && !(result instanceof type)) {
+    throw new Error(
+      `found the selector ${cssSelector} but it is not of type ${type}`
+    );
+  }
+  return result as T;
 };
 
 export const setAttribute = (
@@ -12,4 +20,8 @@ export const setAttribute = (
   value: number
 ): void => {
   elt.setAttributeNS(null, name, value + "");
+};
+
+export const getKeys = <T extends object>(object: T) => {
+  return Object.keys(object) as (keyof T)[];
 };
