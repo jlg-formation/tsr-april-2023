@@ -7,4 +7,4 @@ export const bigCircle: Circle = {
 
 export const SVGNS = "http://www.w3.org/2000/svg";
 
-export const url = "http://localhost:3000/api/config";
+export const url = "/api/config";

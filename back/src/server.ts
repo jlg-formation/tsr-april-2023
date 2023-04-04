@@ -5,12 +5,12 @@ import api from "./api";
 
 const app = express();
 const port = 3000;
-const publicDir = ".";
+const publicDir = "../front/dist";
 
-app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  next();
-});
+// app.use((req, res, next) => {
+//   res.setHeader("Access-Control-Allow-Origin", "*");
+//   next();
+// });
 
 app.use((req, res, next) => {
   console.log("req: ", req.method, req.url);
