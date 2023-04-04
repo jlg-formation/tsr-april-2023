@@ -10,8 +10,6 @@ export class Board {
   };
 
   clear() {
-    console.log("clear");
-
     querySelector("svg g.samples").innerHTML = "";
     querySelector("svg g.lines").innerHTML = "";
   }

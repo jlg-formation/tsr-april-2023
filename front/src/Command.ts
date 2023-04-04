@@ -26,17 +26,17 @@ export class Command {
 
   render() {
     const keys = getKeys(this.config);
-    console.log("keys: ", keys);
+
     for (const key of keys) {
       const valueElt = querySelector(`div.command .${key} .value`);
-      console.log("valueElt: ", valueElt);
+
       valueElt.innerHTML = this.config[key] + "";
 
       const sliderElt = querySelector(
         `div.command .${key} input`,
         HTMLInputElement
       );
-      console.log("sliderElt: ", sliderElt);
+
       sliderElt.value = this.config[key] + "";
     }
   }
@@ -50,12 +50,17 @@ export class Command {
       );
 
       sliderElt.addEventListener("input", () => {
-        console.log("input change");
         const newValue = Number(sliderElt.value);
         this.config[key] = newValue;
         this.render();
         this.callback(this.config);
       });
     }
+
+    const buttonElt = querySelector("div.command button");
+    console.log("buttonElt: ", buttonElt);
+    buttonElt.addEventListener("click", () => {
+      console.log("click");
+    });
   }
 }
