@@ -49,10 +49,14 @@ div.command {
     flex-flow: column;
   }
 
-  button {
-    cursor: pointer;
-    align-self: center;
-    padding: 0.5em 1em;
-    width: 8em;
+  div.buttons {
+    display: flex;
+    justify-content: space-between;
+    button {
+      cursor: pointer;
+      align-self: center;
+      padding: 0.5em 1em;
+      width: 8em;
+    }
   }
 }

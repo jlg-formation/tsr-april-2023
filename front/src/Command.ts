@@ -45,7 +45,9 @@ export class Command {
         this.config[key] + "";
     }
 
-    $("div.command button").innerHTML = this.isPlaying ? "Arrêter" : "Démarrer";
+    $("div.command button.play").innerHTML = this.isPlaying
+      ? "Arrêter"
+      : "Démarrer";
   }
 
   setActions() {
@@ -61,7 +63,7 @@ export class Command {
       });
     }
 
-    const buttonElt = $("div.command button");
+    const buttonElt = $("div.command button.play");
     console.log("buttonElt: ", buttonElt);
     buttonElt.addEventListener("click", () => {
       console.log("click");
