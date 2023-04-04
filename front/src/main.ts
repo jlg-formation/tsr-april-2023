@@ -1,4 +1,4 @@
-import "./style.css";
+import "./style.scss";
 
 import { Board } from "./Board";
 import { Config } from "./interfaces/Config";

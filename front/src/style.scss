@@ -1,0 +1,57 @@
+:root {
+  --color: black;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: sans-serif;
+}
+
+svg {
+  width: 50em;
+  height: 25em;
+  border: 0.1em solid var(--color);
+
+  circle {
+    fill: transparent;
+    stroke: var(--color);
+    stroke-width: 0.02em;
+  }
+
+  g.samples {
+    circle {
+      fill: var(--color);
+    }
+  }
+
+  g.lines {
+    line {
+      stroke: var(--color);
+      stroke-width: 0.02em;
+    }
+  }
+}
+
+div.command {
+  border: 0.1em solid var(--color);
+  width: 50em;
+  padding: 1em;
+
+  display: flex;
+  flex-flow: column;
+  gap: 1em;
+
+  label {
+    display: flex;
+    flex-flow: column;
+  }
+
+  button {
+    cursor: pointer;
+    align-self: center;
+    padding: 0.5em 1em;
+  }
+}
