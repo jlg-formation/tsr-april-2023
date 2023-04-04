@@ -1,7 +1,9 @@
 import { Config } from "./interfaces/Config";
-import { getKeys, $ } from "./misc";
+import { getKeys, $, sleep } from "./misc";
 
 type OnChangeCallback = (newConfig: Config) => void;
+
+const step = 0.01;
 
 export class Command {
   callback: OnChangeCallback = () => {};
@@ -20,9 +22,15 @@ export class Command {
     this.callback = callback;
   }
 
-  setConfig(config: Config) {
-    this.config = config;
-    this.render();
+  async play() {
+    while (this.isPlaying) {
+      await sleep(50);
+      let mf = this.config.multiplicationFactor;
+      mf = +((mf + step) % 100).toFixed(2);
+      this.config.multiplicationFactor = mf;
+      this.render();
+      this.callback(this.config);
+    }
   }
 
   render() {
@@ -59,6 +67,14 @@ export class Command {
       console.log("click");
       this.isPlaying = !this.isPlaying;
       this.render();
+      if (this.isPlaying) {
+        this.play();
+      }
     });
+  }
+
+  setConfig(config: Config) {
+    this.config = config;
+    this.render();
   }
 }
