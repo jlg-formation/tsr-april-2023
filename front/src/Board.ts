@@ -26,14 +26,14 @@ export class Board {
     for (let i = 0; i < this.#config.samples; i++) {
       const angle1 = getAngleFromIndex(i, this.#config.samples);
       const angle2 = angle1 * this.#config.multiplicationFactor;
-      const p1 = getCoordinates(angle1);
-      const p2 = getCoordinates(angle2);
+      const point1 = getCoordinates(angle1);
+      const point2 = getCoordinates(angle2);
 
       const line = document.createElementNS(SVGNS, "line");
-      setAttribute(line, "x1", p1.x);
-      setAttribute(line, "y1", p1.y);
-      setAttribute(line, "x2", p2.x);
-      setAttribute(line, "y2", p2.y);
+      setAttribute(line, "x1", point1.x);
+      setAttribute(line, "y1", point1.y);
+      setAttribute(line, "x2", point2.x);
+      setAttribute(line, "y2", point2.y);
       gLineElement.appendChild(line);
     }
   }
