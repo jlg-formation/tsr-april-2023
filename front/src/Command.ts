@@ -9,6 +9,7 @@ export class Command {
     multiplicationFactor: 0,
     samples: 0,
   };
+  isPlaying = false;
 
   constructor() {
     this.setActions();
@@ -39,6 +40,9 @@ export class Command {
 
       sliderElt.value = this.config[key] + "";
     }
+
+    const buttonElt = querySelector("div.command button");
+    buttonElt.innerHTML = this.isPlaying ? "Arrêter" : "Démarrer";
   }
 
   setActions() {
@@ -61,6 +65,8 @@ export class Command {
     console.log("buttonElt: ", buttonElt);
     buttonElt.addEventListener("click", () => {
       console.log("click");
+      this.isPlaying = !this.isPlaying;
+      this.render();
     });
   }
 }
