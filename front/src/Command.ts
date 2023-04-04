@@ -82,8 +82,16 @@ export class Command {
       console.log("click random");
 
       (async () => {
-        const response = await fetch(url);
-        console.log("response: ", response);
+        try {
+          const response = await fetch(url);
+          console.log("response: ", response);
+          const config: Config = await response.json();
+          this.config = config;
+          this.render();
+          this.callback(this.config);
+        } catch (err) {
+          console.log("err: ", err);
+        }
       })();
     });
   }
