@@ -1,4 +1,4 @@
-const express = require("express");
+import express from "express";
 const app = express.Router();
 
 app.get("/config", (req, res) => {
@@ -8,4 +8,4 @@ app.get("/config", (req, res) => {
   });
 });
 
-module.exports = app;
+export default app;
