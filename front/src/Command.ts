@@ -73,6 +73,13 @@ export class Command {
         this.play();
       }
     });
+
+    const randomButtonElt = $("div.command button.random");
+    console.log("randomButtonElt: ", randomButtonElt);
+
+    randomButtonElt.addEventListener("click", () => {
+      console.log("click random");
+    });
   }
 
   setConfig(config: Config) {
