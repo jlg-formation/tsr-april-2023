@@ -1,7 +1,10 @@
 {
   "compilerOptions": {
     "outDir": "dist",
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "target": "ESNext",
+    "moduleResolution": "node",
+    "module": "CommonJS"
   },
   "include": ["src"],
   "exclude": ["node_modules"]
