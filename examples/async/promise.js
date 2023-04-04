@@ -1,13 +1,9 @@
-const fs = require("fs");
-const util = require("util");
+const fs = require("fs").promises;
 
-const readdir = util.promisify(fs.readdir);
-const readFile = util.promisify(fs.readFile);
-
-readdir(".")
+fs.readdir(".")
   .then((files) => {
     console.log("files: ", files);
-    return readFile(files[0], { encoding: "utf-8" });
+    return fs.readFile(files[0], { encoding: "utf-8" });
   })
   .then((content) => {
     console.log("content: ", content);
