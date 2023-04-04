@@ -48,8 +48,13 @@ export class Command {
         `div.command .${key} input`,
         HTMLInputElement
       );
+
       sliderElt.addEventListener("input", () => {
         console.log("input change");
+        const newValue = Number(sliderElt.value);
+        this.config[key] = newValue;
+        this.render();
+        this.callback(this.config);
       });
     }
   }
