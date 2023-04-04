@@ -11,6 +11,7 @@ export class Command {
   };
 
   constructor() {
+    this.setActions();
     this.render();
   }
 
@@ -37,6 +38,19 @@ export class Command {
       );
       console.log("sliderElt: ", sliderElt);
       sliderElt.value = this.config[key] + "";
+    }
+  }
+
+  setActions() {
+    const keys = getKeys(this.config);
+    for (const key of keys) {
+      const sliderElt = querySelector(
+        `div.command .${key} input`,
+        HTMLInputElement
+      );
+      sliderElt.addEventListener("input", () => {
+        console.log("input change");
+      });
     }
   }
 }
