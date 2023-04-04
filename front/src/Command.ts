@@ -1,3 +1,4 @@
+import { url } from "./constants";
 import { Config } from "./interfaces/Config";
 import { getKeys, $, sleep } from "./misc";
 
@@ -79,6 +80,11 @@ export class Command {
 
     randomButtonElt.addEventListener("click", () => {
       console.log("click random");
+
+      (async () => {
+        const response = await fetch(url);
+        console.log("response: ", response);
+      })();
     });
   }
 
